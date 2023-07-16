@@ -5,6 +5,10 @@ on:
 jobs:
   automation:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.35.1-focal
+      env:
+        ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
