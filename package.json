@@ -1,0 +1,30 @@
+{
+  "name": "my-fw",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chai": "^4.3.5",
+    "@types/dotenv": "^8.2.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "^20.4.1",
+    "@types/uuid": "^9.0.2",
+    "chai": "^4.3.7",
+    "chromedriver": "^114.0.2",
+    "dotenv": "^16.3.1",
+    "mocha": "^10.2.0",
+    "node-fetch": "^2.6.12",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.35.1"
+  }
+}
