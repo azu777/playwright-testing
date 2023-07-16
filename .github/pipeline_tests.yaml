@@ -1,5 +1,7 @@
-name: Automation CI
-on: [push]
+name: Automation
+on:
+  push:
+    branches: [ master ]
 jobs:
   automation:
     runs-on: ubuntu-latest
