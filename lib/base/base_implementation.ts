@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator } from "@playwright/test";
 
 const childrenList = ['Text', 'Button', 'Input'];
 
@@ -19,10 +19,8 @@ const getElementPropertyNames = function (ctx) {
 
 class BaseImplementation {
   private root: Locator;
-  private page: Page;
 
-  constructor(page: Page, root: Locator) {
-    this.page = page;
+  constructor(root: Locator) {
     this.root = root;
   }
 
