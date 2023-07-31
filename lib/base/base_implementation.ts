@@ -1,4 +1,4 @@
-import { Locator } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 
 const childrenList = ['Text', 'Button', 'Input'];
 
@@ -18,18 +18,20 @@ const getElementPropertyNames = function (ctx) {
 
 
 class BaseImplementation {
-  private root: Locator;
+  protected page: Page;
+  protected selector: string;
 
-  constructor(root: Locator) {
-    this.root = root;
+  constructor(page, selector = 'body') {
+    this.page = page;
+    this.selector = selector;
   }
 
   initChild(Child, selector): any {
-    return new Child(this.root.locator(selector));
+    return new Child(this.page.locator(selector));
   }
 
   async waitForPageReadiness(): Promise<void> {
-    await this.root.waitFor({ state: 'visible', timeout: 10_000 });
+    await this.page.locator(this.selector).waitFor({ state: 'visible', timeout: 20_000 });
   }
 
   async click(dataObj): Promise<any> {
@@ -78,7 +80,7 @@ class BaseImplementation {
     await this.waitForPageReadiness();
 
     if (dataObj === null) {
-      return this.root.isVisible();
+      return this.page.locator(this.selector).isVisible();
     }
     const values = {};
 

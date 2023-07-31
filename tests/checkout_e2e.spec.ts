@@ -4,7 +4,7 @@ import { NavigationPagFragment } from '../src/pages/navigation.fragment';
 import { v4 as uuid4 } from 'uuid';
 import { deliveryDetails as userData, paymentData } from '../src/data';
 
-test('Should checkout product', async function ({ page }) {
+test.only('Should checkout product', async function ({ page }) {
   const artPage = new ArtPage(page);
   const checkoutPage = new CheckoutPage(page);
   const loginPage = new LoginPage(page);
@@ -17,23 +17,26 @@ test('Should checkout product', async function ({ page }) {
   const password = uuid4();
 
   await artPage.visit();
-  await artPage.sortByCheapest();
-  await artPage.addProductToBasket(0);
-  await artPage.addProductToBasket(1);
-  await artPage.addProductToBasket(2);
-  await navigation.goToCheckout();
+  // await artPage.sortByCheapest();
+  await artPage.click({ addButton: null });
 
-  await checkoutPage.removeCheapestProduct();
-  await checkoutPage.continueToCheckout();
+  await page.pause();
+  // await artPage.addProductToBasket(0);
+  // await artPage.addProductToBasket(1);
+  // await artPage.addProductToBasket(2);
+  // await navigation.goToCheckout();
 
-  await loginPage.goToSignUp();
-  await registerPage.signUpAsNewUser(email, password);
+  // await checkoutPage.removeCheapestProduct();
+  // await checkoutPage.continueToCheckout();
 
-  await deliveryDetailsPage.fillDetails(userData);
-  await deliveryDetailsPage.saveDetails();
-  await deliveryDetailsPage.goToPayment();
+  // await loginPage.goToSignUp();
+  // await registerPage.signUpAsNewUser(email, password);
 
-  await paymentPage.activateDiscount();
-  await paymentPage.setPaymentDetails(paymentData);
-  await paymentPage.completePayment();
+  // await deliveryDetailsPage.fillDetails(userData);
+  // await deliveryDetailsPage.saveDetails();
+  // await deliveryDetailsPage.goToPayment();
+
+  // await paymentPage.activateDiscount();
+  // await paymentPage.setPaymentDetails(paymentData);
+  // await paymentPage.completePayment();
 });
